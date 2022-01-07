@@ -24,7 +24,7 @@
       <app-list-other-condition [formGroup]="teamForm" [employees]="employees" isValidFormSubmitted ="isValidFormSubmitted "></app-list-other-condition>
    
     <br/>
-    <button  type="submit">SUBMIT</button>
+    <button  type="submit"[disabled]="!teamForm.valid">SUBMIT</button>
 
   </form>
 </div>

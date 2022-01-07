@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { TeamManagementService } from '../empleados/team-management.service';
 
@@ -21,16 +21,10 @@ export class ListOtherConditionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-//if (this.formArray.length === 0)
-    //  this.addItem();
+
   }
-  get teamName() {
-		return this.formGroup.get('teamName');
-	}
-  /*
-	get employees(): FormArray {
-		return this.formGroup.get('employees') as FormArray;
-	}*/
+ 
+ 
 	addEmployee() {
 		let fg = this.createEmpFormGroup();
 		this.employees.push(fg);
@@ -41,26 +35,8 @@ export class ListOtherConditionComponent implements OnInit {
   createEmpFormGroup() {
 		return this.fb.group({
 			empName: ['', [Validators.required]],
-			age: ['', [Validators.required, Validators.min(21)]],
+			age: ['', [Validators.required]],
 			skill: ['', [Validators.required]],
 		})}
-/*
-  get formArray():FormArray {
-    return this.formGroup!.get(this.arrayName)! as FormArray
-  }*/
-/*
-  addItem() {
-    this.formArray.push(this.initItem())
-  }
-  removeItem(i:number) {
-    this.formArray.removeAt(i)
-    if (this.formArray.length === 0)
-      this.formArray.push(this.initItem())
-  }*/
-/*
-  public initItem = () : FormGroup =>
-    this.fb.group({
-      diagnosis: this.fb.control(null, Validators.required),
-      year: this.fb.control(null, Validators.required)
-    })*/
+
 }
