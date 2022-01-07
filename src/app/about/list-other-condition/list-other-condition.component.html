@@ -1,0 +1,51 @@
+<p>list-other-condition works!</p>
+<form [formGroup]="formGroup">
+    <div formArrayName="employees">
+        <div *ngFor="let emp of employees.controls; let i = index" [formGroupName]="i" class="employee">
+            
+            <b>Employee : {{i + 1}}</b>
+       
+          <p>Name :
+            <input formControlName="empName">
+            <br />
+            <label
+              *ngIf="employees.controls[i].get('empName')?.errors?.required && isValidFormSubmitted != null && !isValidFormSubmitted"
+              class="error">
+              Employee name required.
+            </label>
+          </p>
+          <p>Age :
+            <input formControlName="age">
+            <br />
+            <label
+              *ngIf="employees.controls[i].get('age')?.errors?.required && isValidFormSubmitted != null && !isValidFormSubmitted"
+              class="error">
+              Age required.
+            </label>
+            <label
+              *ngIf="employees.controls[i].get('age')?.errors?.min && isValidFormSubmitted != null && !isValidFormSubmitted"
+              class="error">
+              Minimum age is 21.
+            </label>
+          </p>
+          <p>Skill :
+            <select formControlName="skill">
+              <option *ngFor="let skill of allSkills | async" [ngValue]="skill.name">
+                {{ skill.displayName }}
+              </option>
+            </select>
+            <br />
+            <label
+              *ngIf="employees.controls[i].get('skill')?.errors?.required && isValidFormSubmitted != null && !isValidFormSubmitted"
+              class="error">
+              Select skill.
+            </label>
+          </p>
+          <p>
+            <button type="button" (click)="deleteEmployee(i)">Delete</button>
+          </p>
+        
+      </div>
+      <button type="button" (click)="addEmployee()">Add More Employee</button>
+    </div>
+    </form>

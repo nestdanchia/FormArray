@@ -1,0 +1,30 @@
+<h3>Create New Team</h3>
+<div *ngIf="isValidFormSubmitted" class="submitted"> Form submitted successfully. </div>
+<div class="team">
+  <form [formGroup]="teamForm" (ngSubmit)="onFormSubmit()">
+    <p>Team Name :
+      <input formControlName="teamName">
+      <br />
+      <label *ngIf="teamName?.invalid && isValidFormSubmitted != null && !isValidFormSubmitted" class="error">
+        Team name is required.
+      </label>
+    </p>
+    <div class="all-emp">
+      <b>Employees in Team:</b>
+      <br>
+      <label *ngIf="employees.errors?.required" class="error">
+        Add Employees.
+      </label>
+      <label *ngIf="employees.errors?.maxlength" class="error">
+        Maximum number of Employees can be 5.
+      </label>
+      <br>
+      </div>
+  <p>
+      <app-list-other-condition [formGroup]="teamForm" [employees]="employees" isValidFormSubmitted ="isValidFormSubmitted "></app-list-other-condition>
+   
+    <br/>
+    <button  type="submit">SUBMIT</button>
+
+  </form>
+</div>
