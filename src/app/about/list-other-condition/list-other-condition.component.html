@@ -9,25 +9,29 @@
             <input formControlName="empName">
             <br />
             <label
-              *ngIf="employees.controls[i].get('empName')?.errors?.required && isValidFormSubmitted != null && !isValidFormSubmitted"
-              class="error">
+              *ngIf="employees.controls[i].get('empName')?.errors?.required"
+              >
               Employee name required.
             </label>
           </p>
           <p>Age :
             <input formControlName="age">
             <br />
+ 
+
+
             <label
-              *ngIf="employees.controls[i].get('age')?.errors?.required && isValidFormSubmitted != null && !isValidFormSubmitted"
-              class="error">
+              *ngIf="employees.controls[i].get('age')?.errors?.required"
+             
+              >
               Age required.
             </label>
             <label
-              *ngIf="employees.controls[i].get('age')?.errors?.min && isValidFormSubmitted != null && !isValidFormSubmitted"
-              class="error">
+              *ngIf="employees.controls[i].get('age')?.errors?.min" 
+              >
               Minimum age is 21.
             </label>
-          </p>
+          
           <p>Skill :
             <select formControlName="skill">
               <option *ngFor="let skill of allSkills | async" [ngValue]="skill.name">
@@ -36,8 +40,9 @@
             </select>
             <br />
             <label
-              *ngIf="employees.controls[i].get('skill')?.errors?.required && isValidFormSubmitted != null && !isValidFormSubmitted"
-              class="error">
+              *ngIf="employees.controls[i].get('skill')?.errors?.required"
+             
+              >
               Select skill.
             </label>
           </p>

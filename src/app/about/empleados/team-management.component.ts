@@ -35,11 +35,11 @@ export class TeamManagementComponent implements OnInit {
 	get employees(): FormArray {
 		return this.teamForm.get('employees') as FormArray;
 	}
-	
+	//[disabled]="!teamForm.valid"
 	onFormSubmit() {
 		
 	
-		this.isValidFormSubmitted = true;
+	
 		if (this.teamForm.valid) {
 			console.log('form submitted');
 		  }

@@ -11,8 +11,7 @@ import { TeamManagementService } from '../empleados/team-management.service';
 export class ListOtherConditionComponent implements OnInit {
   @Input()
   formGroup!:FormGroup
-  @Input()
-  isValidFormSubmitted!:string
+  
   @Input()
   employees!:  FormArray
   allSkills!: Observable<any[]>;
@@ -23,7 +22,9 @@ export class ListOtherConditionComponent implements OnInit {
   ngOnInit(): void {
 
   }
- 
+  get age() { return this.employees.get('age'); }
+
+  get empName() { return this.employees.get('empName'); }
  
 	addEmployee() {
 		let fg = this.createEmpFormGroup();
@@ -32,10 +33,20 @@ export class ListOtherConditionComponent implements OnInit {
   deleteEmployee(idx: number) {
 		this.employees.removeAt(idx);
 	}
+  /*
+  <!-- error -->
+   <mat-error *ngIf="errorHandling('name', 'required')">
+      You must provide a<strong>name</strong>
+   </mat-error>
+  */
+  public errorHandling = (control: string, error: string) => {
+    return this.formGroup.controls[control].hasError(error);
+  }
+
   createEmpFormGroup() {
 		return this.fb.group({
-			empName: ['', [Validators.required]],
-			age: ['', [Validators.required]],
+			empName: ['', [Validators.required,Validators.minLength(4)]],
+			age: ['', [Validators.required,Validators.min(21)]],
 			skill: ['', [Validators.required]],
 		})}
 

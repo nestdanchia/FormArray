@@ -6,6 +6,7 @@ import { AboutRoutingModule } from './about-routing.module';
 import { AboutComponent } from './about.component';
 import { ListOtherConditionComponent } from './list-other-condition/list-other-condition.component';
 import { TeamManagementComponent } from './empleados/team-management.component';
+import { AngularMaterialModule } from '../material.module';
 //import {EmpleadosComponent } from './empleados/empleados.component';
 
 
@@ -19,7 +20,8 @@ import { TeamManagementComponent } from './empleados/team-management.component';
     CommonModule,
     AboutRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AngularMaterialModule,
   ]
 })
 export class AboutModule { }
