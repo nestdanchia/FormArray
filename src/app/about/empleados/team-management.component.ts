@@ -8,12 +8,14 @@ import { Team } from './team';
 
 @Component({
 	selector: 'app-team',
-	templateUrl: './team-management.component.html'
+	templateUrl: './team-management.component.html',
+	styleUrls: ['./team-management.component.css']
+
 })
 
 export class TeamManagementComponent implements OnInit {
 	teamForm = {} as FormGroup;
-	isValidFormSubmitted: boolean | null = null;
+	//isValidFormSubmitted: boolean | null = null;
 	allSkills: Observable<any[]>;
 	constructor(
 		private formBuilder: FormBuilder,
@@ -28,7 +30,7 @@ export class TeamManagementComponent implements OnInit {
 		});
 	}
 	
-	
+
 	get teamName() {
 		return this.teamForm.get('teamName');
 	}

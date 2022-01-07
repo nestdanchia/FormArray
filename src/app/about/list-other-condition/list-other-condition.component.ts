@@ -49,5 +49,11 @@ export class ListOtherConditionComponent implements OnInit {
 			age: ['', [Validators.required,Validators.min(21)]],
 			skill: ['', [Validators.required]],
 		})}
-
+/*
+<mat-error *ngIf="myError('empName','required')">empName is required</mat-error>
+    public myError = (controlName: any, errorName: string) =>{
+      return this.employees.controls[controlName].hasError(errorName)
+      }
+      
+*/
 }

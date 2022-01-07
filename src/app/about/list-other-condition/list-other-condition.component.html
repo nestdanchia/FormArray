@@ -8,11 +8,10 @@
           <p>Name :
             <input formControlName="empName">
             <br />
-            <label
-              *ngIf="employees.controls[i].get('empName')?.errors?.required"
-              >
-              Employee name required.
-            </label>
+            
+             
+            
+            <mat-error *ngIf="employees.controls[i].get('empName')?.errors?.required">empName is required</mat-error>
           </p>
           <p>Age :
             <input formControlName="age">
@@ -20,18 +19,18 @@
  
 
 
-            <label
-              *ngIf="employees.controls[i].get('age')?.errors?.required"
+            
+            <mat-error   *ngIf="employees.controls[i].get('age')?.errors?.required"> Age required.</mat-error>
              
-              >
-              Age required.
-            </label>
-            <label
-              *ngIf="employees.controls[i].get('age')?.errors?.min" 
-              >
+             
+             
+            
+           
+<mat-error *ngIf="employees.controls[i].get('age')?.errors?.min">
+             
               Minimum age is 21.
-            </label>
           
+</mat-error>
           <p>Skill :
             <select formControlName="skill">
               <option *ngFor="let skill of allSkills | async" [ngValue]="skill.name">

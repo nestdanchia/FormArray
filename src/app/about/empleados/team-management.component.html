@@ -1,14 +1,12 @@
 <h3>Create New Team</h3>
-<div *ngIf="isValidFormSubmitted" class="submitted"> Form submitted successfully. </div>
+
 <div class="team">
   <form [formGroup]="teamForm" (ngSubmit)="onFormSubmit()">
     <p>Team Name :
       <input formControlName="teamName">
       <br />
-      <label *ngIf="teamName?.invalid">
-    
-        Team name is required.
-      </label>
+      
+      <mat-error *ngIf="teamName?.errors?.['required']">teamName required</mat-error>
       
     </p>
     <div class="all-emp">
