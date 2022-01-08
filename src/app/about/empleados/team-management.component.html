@@ -11,9 +11,10 @@
       <mat-form-field >
       <input matInput formControlName="teamName">
      
-    </mat-form-field>
-    <mat-error *ngIf="teamName?.errors?.['required']">teamName required</mat-error>
-     
+      </mat-form-field>
+    <mat-error>  
+      <span *ngIf="!teamName?.valid && teamName?.touched">Please enter Team Name !!!</span>  
+  </mat-error>  
     
 
   
