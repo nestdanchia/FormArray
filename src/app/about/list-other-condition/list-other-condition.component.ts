@@ -45,11 +45,12 @@ export class ListOtherConditionComponent implements OnInit {
 
   createEmpFormGroup() {
 		return this.fb.group({
-			empName: ['', [Validators.required,Validators.minLength(4)]],
+			empName: ['', [Validators.required]],
 			age: ['', [Validators.required,Validators.min(21)]],
 			skill: ['', [Validators.required]],
 		})}
 /*
+,Validators.minLength(4)]
 <mat-error *ngIf="myError('empName','required')">empName is required</mat-error>
     public myError = (controlName: any, errorName: string) =>{
       return this.employees.controls[controlName].hasError(errorName)

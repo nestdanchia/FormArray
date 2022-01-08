@@ -3,34 +3,39 @@
     <div formArrayName="employees">
         <div *ngFor="let emp of employees.controls; let i = index" [formGroupName]="i" class="employee">
             
-            <b>Employee : {{i + 1}}</b>
+          <mat-label>Employee : {{i + 1}}</mat-label>
        
-          <p>Name :
-            <input formControlName="empName">
-            <br />
-            
-             
+            <mat-label>Name :</mat-label> 
+            <mat-form-field >
+            <input matInput formControlName="empName">
+           
+          </mat-form-field>
+          <mat-error *ngIf="employees.controls[i].get('empName')?.errors?.minLength">empName at lest 4 caracters</mat-error>
+          
             
             <mat-error *ngIf="employees.controls[i].get('empName')?.errors?.required">empName is required</mat-error>
-          </p>
-          <p>Age :
-            <input formControlName="age">
-            <br />
- 
+            
+          Age :
+            <mat-form-field >
+            <input matInput formControlName="age">
+            
+          </mat-form-field>
+          <mat-error   *ngIf="employees.controls[i].get('age')?.errors?.required"> Age required.</mat-error>
+          <mat-error *ngIf="employees.controls[i].get('age')?.errors?.min">
+           
+            Minimum age is 21.
+        
+</mat-error>
 
 
             
-            <mat-error   *ngIf="employees.controls[i].get('age')?.errors?.required"> Age required.</mat-error>
+            
              
              
              
             
            
-<mat-error *ngIf="employees.controls[i].get('age')?.errors?.min">
-             
-              Minimum age is 21.
-          
-</mat-error>
+
           <p>Skill :
             <select formControlName="skill">
               <option *ngFor="let skill of allSkills | async" [ngValue]="skill.name">
@@ -50,6 +55,6 @@
           </p>
         
       </div>
-      <button type="button" (click)="addEmployee()">Add More Employee</button>
+      <button mat-flat-button color="primary" type="button" (click)="addEmployee()">Add More Employee</button>
     </div>
     </form>

@@ -1,31 +1,37 @@
 <h3>Create New Team</h3>
-
+<mat-sidenav-container>
+  <mat-sidenav-content>
 <div class="team">
   <form [formGroup]="teamForm" (ngSubmit)="onFormSubmit()">
-    <p>Team Name :
-      <input formControlName="teamName">
-      <br />
+    
+    Team Name :
+      <mat-form-field >
+      <input matInput formControlName="teamName">
+    </mat-form-field>
       
       <mat-error *ngIf="teamName?.errors?.['required']">teamName required</mat-error>
-      
-    </p>
-    <div class="all-emp">
+    
+    
+  
+    
       <b>Employees in Team:</b>
       <br>
-      <label *ngIf="employees.errors?.required" >
+     <mat-label  *ngIf="employees.errors?.required" >
         Add Employees.
-      </label>
-      <label *ngIf="employees.errors?.maxlength" >
+      </mat-label>
+      <mat-label *ngIf="employees.errors?.maxlength" >
         Maximum number of Employees can be 5.
-      </label>
+      </mat-label>
       <br>
-      </div>
+  
   <p>
       <app-list-other-condition [formGroup]="teamForm" [employees]="employees" ></app-list-other-condition>
    
     <br/>
-    <button  type="submit" [disabled]="!teamForm.valid">SUBMIT</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="!teamForm.valid">SUBMIT</button>
 
   </form>
 </div>
+</mat-sidenav-content>
+</mat-sidenav-container>
 <p>Form Status: {{ teamForm.status }}</p>

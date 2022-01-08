@@ -29,8 +29,8 @@ export class TeamManagementComponent implements OnInit {
 				
 		});
 	}
-	
-
+	// teamForm.teamName.errors
+	get formControls() { return this.teamForm.controls; }
 	get teamName() {
 		return this.teamForm.get('teamName');
 	}
