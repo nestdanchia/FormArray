@@ -10,7 +10,6 @@
             <input matInput formControlName="empName">
            
           </mat-form-field>
-          <mat-error *ngIf="employees.controls[i].get('empName')?.errors?.minLength">empName at lest 4 caracters</mat-error>
           
             
             <mat-error *ngIf="employees.controls[i].get('empName')?.errors?.required">empName is required</mat-error>
