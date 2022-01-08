@@ -35,20 +35,22 @@
             
            
 
-          <p>Skill :
-            <mat-select formControlName="skill">
+          <h2>Skill :</h2>
+          <mat-form-field>
+            <mat-label>Your skill</mat-label>
+            <mat-select  formControlName="skill"required>
               <mat-option *ngFor="let skill of allSkills | async" [value]="skill.name" >
                 {{ skill.displayName }}
               </mat-option>
             </mat-select>
-            <br />
-            <label
+            
+            
+            </mat-form-field>
+            <mat-error
               *ngIf="employees.controls[i].get('skill')?.errors?.required"
              
-              >
-              Select skill.
-            </label>
-          </p>
+              >You must make a selection </mat-error>
+         
           <p>
             <button mat-flat-button color="primary" type="button" (click)="deleteEmployee(i)">Delete</button>
           </p>
