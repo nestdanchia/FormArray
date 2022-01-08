@@ -37,7 +37,7 @@
 
           <p>Skill :
             <mat-select formControlName="skill">
-              <mat-option *ngFor="let skill of allSkills | async" [value]="skill.name">
+              <mat-option *ngFor="let skill of allSkills | async" [value]="skill.name" >
                 {{ skill.displayName }}
               </mat-option>
             </mat-select>
@@ -50,7 +50,7 @@
             </label>
           </p>
           <p>
-            <button type="button" (click)="deleteEmployee(i)">Delete</button>
+            <button mat-flat-button color="primary" type="button" (click)="deleteEmployee(i)">Delete</button>
           </p>
         
       </div>
