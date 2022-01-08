@@ -50,10 +50,9 @@
               *ngIf="employees.controls[i].get('skill')?.errors?.required"
              
               >You must make a selection </mat-error>
-         
-          <p>
+         <p>
             <button mat-flat-button color="primary" type="button" (click)="deleteEmployee(i)">Delete</button>
-          </p>
+          </p> 
         
       </div>
       <button mat-flat-button color="primary" type="button" (click)="addEmployee()">Add More Employee</button>
