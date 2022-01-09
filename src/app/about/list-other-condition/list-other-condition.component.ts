@@ -15,11 +15,13 @@ export class ListOtherConditionComponent implements OnInit {
   @Input()
   employees!:  FormArray
   allSkills!: Observable<any[]>;
-  constructor(private teamMngService: TeamManagementService, private fb: FormBuilder, private readonly cdr: ChangeDetectorRef){
+  constructor(private fbchild: FormBuilder,private teamMngService: TeamManagementService, private fb: FormBuilder, private readonly cdr: ChangeDetectorRef){
     this.allSkills = this.teamMngService.getSkills()
   }
-
+  
   ngOnInit(): void {
+    if (this.employees.length === 0)
+    this.addEmployee();
 
   }
   get age() { return this.employees.get('age'); }
@@ -33,23 +35,29 @@ export class ListOtherConditionComponent implements OnInit {
   deleteEmployee(idx: number) {
 		this.employees.removeAt(idx);
 	}
-  /*
-  <!-- error -->
-   <mat-error *ngIf="errorHandling('name', 'required')">
-      You must provide a<strong>name</strong>
-   </mat-error>
-  */
+  
   public errorHandling = (control: string, error: string) => {
     return this.formGroup.controls[control].hasError(error);
   }
 
   createEmpFormGroup() {
 		return this.fb.group({
-			empName: ['', [Validators.required]],
-			age: ['', [Validators.required,Validators.min(21)]],
-			skill: ['', [Validators.required]],
+			//empName: ['', [Validators.required]],
+      empName:this.fbchild.control(null, Validators.required),
+		//	age: ['', [Validators.required,Validators.min(21)]],
+    age:this.fbchild.control(null, [Validators.required,Validators.min(21)]),
+		//	skill: ['', [Validators.required]],
+    skill:this.fbchild.control(null, Validators.required),
 		})}
+
+}
 /*
+  <!-- error -->
+   <mat-error *ngIf="errorHandling('name', 'required')">
+      You must provide a<strong>name</strong>
+   </mat-error>
+  */
+ /*
 ,Validators.minLength(4)]
 <mat-error *ngIf="myError('empName','required')">empName is required</mat-error>
     public myError = (controlName: any, errorName: string) =>{
@@ -57,4 +65,3 @@ export class ListOtherConditionComponent implements OnInit {
       }
       
 */
-}
